@@ -597,7 +597,8 @@ pub fn invoke(app: &mut FilmcraftApp, ctx: &egui::Context, id: &str, mut params:
     }
     // Q (Ripple Trim Previous Edit to Playhead) parks the playhead on the new edit its extract
     // leaves behind. Stop any playback so the running clock does not carry the playhead past it
-    // again; W (the next edit) keeps its behaviour (the engine sets the playhead itself).
+    // again. W (the next edit) removes the range starting at the playhead, so it leaves the
+    // playhead alone and playback keeps running.
     if r.is_ok() && id == "trim.ripplePrevious" && app.playback.playing {
         app.stop();
     }
